@@ -36,6 +36,7 @@ public class AnnotationRegle {
 	private String extraitInfoExtractionNumeroOrdreDansParagraphe = "";
 	private String aboutIFCData = "";
 	
+	private String aboutRuben = "";
 	
 	// default constructor
 	public AnnotationRegle(){

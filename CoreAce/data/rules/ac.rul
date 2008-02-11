@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+<!ENTITY ac   "http://rainbow.essi.fr/~anastasiya/data/ac.rdfs"> 
+<!ENTITY ifc      "http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs"> 
+<!ENTITY cos     "http://www.inria.fr/acacia/corese#">
+<!ENTITY rdf     "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<!ENTITY rdfs     "http://www.w3.org/2000/01/rdf-schema">
+<!ENTITY xsd     "http://www.w3.org/2001/XMLSchema#">]>
+
+   
+    <rdf:RDF 
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xsd ="&xsd;#" 
+        xsi:schemaLocation="http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.w3.org/2000/07/rdf.xsd"
+        xmlns:rdfs="&rdfs;#"
+        xmlns:ifc="&ifc;#"
+        xmlns:ac="&ac;#"
+        xmlns:cos="&cos;" 
+        xmlns     ="&rdfs;#"         
+        >
+    
+        <cos:rule rdf:ID="PorteExterieure">
+            <cos:if>
+                PREFIX ac: &lt;&ac;&gt;
+                ifc: &lt;&ac;&gt;
+                { ?x rdf:type ifc:IfcDoor
+                ?x ifc:isExterior  "TRUE" }         
+            </cos:if>        
+            <cos:then>
+                { ?x rdf:type ac:PorteExterieure}
+            </cos:then>
+        </cos:rule>
+    
+    <cos:rule rdf:ID="PorteExterieureAccessible">
+        <cos:if>
+            PREFIX ac: &lt;&ac;&gt;
+            ifc: &lt;&ac;&gt;
+            { ?x rdf:type ac:PorteAccessible
+            ?x rdf:type ac:PorteExterieure }
+            UNION
+            { ?x rdf:type ac:PorteAccessible
+            ?x ifc:isExterior  "TRUE" }
+            UNION
+            { ?x rdf:type ac:PorteExterieure
+            ?x ifc:overallWidth ?width
+            FILTER (xsd:integer(?width)&gt;=90)}            
+        </cos:if>        
+        <cos:then>
+            { ?x rdf:type ac:PorteExterieureAccessible}
+        </cos:then>
+    </cos:rule>
+              
+        <cos:rule rdf:ID="HallEntree">
+            <cos:if>
+                { ?x rdf:type ifc:IfcBuiltIn <!-- how declare a room?? -->
+                ?x ifc:containsElements ?:y
+                ?y rdf:type ac:PorteExterieure
+                ?x ifc:localPlacement ?z
+                ?z rdf:type ac:RezDeChausse
+                }             
+            </cos:if>                
+            <cos:then>
+                { ?x rdf:type ac:HallEntree}
+            </cos:then>
+        </cos:rule>
+   
+       <cos:rule rdf:ID="HallEntreeAccessible">
+            <cos:if>
+                { ?x rdf:type ac:HallEntree
+                ?x ifc:containsElements ?:y
+                ?y rdf:type ac:PorteAccessible}       
+            </cos:if>            
+            <cos:then>
+                { ?x rdf:type ac:HallEntreeAccessible}
+            </cos:then>
+        </cos:rule>
+    
+    <cos:rule rdf:ID="RezDeChausse">
+        <cos:if>
+            { ?x rdf:type ifc:IfcBuildingStorey
+            ?x ifc:pset_BuildingStoreyCommon_EntranceLevel "TRUE" }
+        
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ac:RezDeChausse}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="LocauxVideOrduresAccessibles">
+        <cos:if>
+            { ?x rdf:type ac:LocauxVideOrdures
+            ?x ifc:placementRelTo ?y
+            ?y rdf:type ac:RezDeChausse
+            ?x ifc:containsElements ?z
+            ?z rdf:type ac:PorteAccessible
+        
+            }
+            UNION
+            {  ?x rdf:type ac:LocauxVideOrdures
+            ?x ifc:placementRelTo ?y
+            ?y rdf:type ifc:IfcBuildingStorey
+            ?y rdf:ifcContainsElements ?z
+            ?z rdf:type ac:AscenseurAccessible
+            }
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ac:LocauxVideOrduresAccessible}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="SousSol">
+        <cos:if>
+            PREFIX ac: &lt;&ac;&gt;
+            ifc: &lt;&ac;&gt;
+            (
+            ?x rdf:type ifc:IfcBuildingStorey
+            ?x elevationOfRefHeight ?floor
+            FILTER (xsd:integer(?floor)&lt;=-1)            
+            }
+   
+        </cos:if>
+        
+        <cos:then>
+            { ?x rdf:type ac:SousSol}
+        </cos:then>
+    </cos:rule>
+    
+    <cos:rule rdf:ID="Cave">
+        <cos:if>
+            PREFIX ac: &lt;&ac;&gt;
+            ifc: &lt;&ac;&gt;
+            {
+            ?x rdf:type ac:Locaux
+            ?x ifc:placementRelTo ?y
+            ?y elevationOfRefHeight ?floor
+            FILTER (xsd:integer(?floor)&lt;=-1)            
+            }
+            UNION
+            {?x rdf:type ac:Locaux
+            ?x ifc:placementRelTo ?y
+            ?y rdf:type ac:SousSol   
+            }    
+        </cos:if>        
+        <cos:then>
+            { ?x rdf:type ac:Cave}
+        </cos:then>
+    </cos:rule>
+        
+        <!---definition LogementRDC-->
+                <cos:rule rdf:ID="LogementRDC">
+            <cos:if>
+                { ?x  rdf:type ac:Logement
+                ?x ifc:localPlacement ?:y
+                ?y rdf:type ac:RezDeChausse
+                }
+            </cos:if>            
+            <cos:then>
+                { ?x rdf:type ac:LogementRDC}
+            </cos:then>
+        </cos:rule>
+        
+        <!---definition LogementRDCAccesParticulier-->
+        <cos:rule rdf:ID="LogementRDCAccesParticulier">
+            <cos:if>
+                { ?x rdf:type ac:LogementRDC
+                ?x ifc:containsElements ?:y
+                ?y rdf:type ac:PorteExterieure}       
+            </cos:if>            
+            <cos:then>
+                { ?x rdf:type ac:LogementRDCAccesParticulier}
+            </cos:then>
+        </cos:rule>
+        
+        <!---definition LogementRDCAccesParticulierAccessible-->
+        <cos:rule rdf:ID="LogementRDCAccesParticulierAccessible">
+            <cos:if>
+                { ?x rdf:type ac:LogementRDCAccesParticulier
+                ?x ifc:containsElements ?y
+                ?y rdf:type ac:PorteAccessible}  
+                UNION
+                { ?x rdf:type ac:HallEntreeAccessible
+                 }
+            </cos:if>            
+            <cos:then>
+                { ?x rdf:type ac:LogementRDCAccesParticulierAccessible}
+            </cos:then>
+        </cos:rule>
+    
+        <!---definition PalierRepos-->
+        <cos:rule rdf:ID="PalierRepos">
+            <cos:if>
+                { ?x rdf:type ac:LogementRDC
+                ?x ifc:containsElements ?:y
+                ?y rdf:type ac:PorteExterieure}       
+            </cos:if>            
+            <cos:then>
+                { ?x rdf:type ac:LogementRDCAccesParticulier}
+            </cos:then>
+        </cos:rule>
+        
+            <!---validation rule PalierRepos--> 
+        <!--exemple de regle validation-->
+        <cos:rule rdf:ID="PalierReposValidation">
+            <cos:if>
+                PREFIX ac: &lt;&ac;&gt;
+                ifc: &lt;&ac;&gt;
+                { ?project rdf:type ifc:IfcProject
+                ?project ifc:containsElements ?x
+                ?x rdf:type ifc:PalierRepos
+                ?x ifc:overallHeight ?length
+                FILTER (xsd:integer(?length)&gt;=140)}    
+            </cos:if>           
+            <cos:then>
+                { ?x rdf:type ifc:PalierReposConform
+                ?project rdf:type ifc:ProjectConform}
+            </cos:then>
+        </cos:rule>
+        
+        <!---calculation ClearWidth for construction project-->
+        <cos:rule rdf:ID="ClearWidthSingleSwing">
+            <cos:if>
+                PREFIX ac: &lt;&ac;&gt;
+                ifc: &lt;&ac;&gt;
+                { ?door rdf:type ifc:IfcDoor
+                ?door ifc:genericType "SingleSwing"
+                ?door ifc:nominalWidth ?nominalwidth
+                ?door ifc:liningWidth ?liningwidth
+                ?door ifc:panelThickness ?panelthickness
+                } 
+            </cos:if>           
+            <cos:then>
+                { <!--pseudo code
+                    ADD property (IfcDoor,Real) ClearWidth-->
+                ?door ifc:clearWidth (nominalwidth - (2 * liningwidth + 1 * panelthickness) )
+                }
+            </cos:then>
+        </cos:rule>
+        
+        <cos:rule rdf:ID="ClearWidthDoubleSwing">
+            <cos:if>
+                PREFIX ac: &lt;&ac;&gt;
+                ifc: &lt;&ac;&gt;
+                { ?door rdf:type ifc:IfcDoor
+                ?door ifc:genericType "DoubleSwing"
+                ?door ifc:nominalWidth ?nominalwidth
+                ?door ifc:liningWidth ?liningwidth
+                ?door ifc:panelThickness ?panelthickness
+                } 
+            </cos:if>           
+            <cos:then>
+                { <!--pseudo code
+                    ADD property (IfcDoor,Real) ClearWidth-->
+                ?door ifc:ClearWidth (nominalwidth - (2 * liningwidth + 2 * panelthickness) )
+                }
+            </cos:then>
+        </cos:rule>
+        
+        <cos:rule rdf:ID="PlacementDevant">
+            <cos:if>
+                PREFIX ac: &lt;&ac;&gt;
+                ifc: &lt;&ac;&gt;
+                { 
+                } 
+            </cos:if>           
+            <cos:then>
+                { 
+                }
+            </cos:then>
+        </cos:rule>
+        
+        <cos:rule rdf:ID="PlanIncline">
+            <cos:if>
+                PREFIX ac: &lt;&ac;&gt;
+                ifc: &lt;&ac;&gt;                
+                { ?x rdf:type ifc:IfcStair
+                 }
+                 UNION
+                { ?x rdf:type ifc:IfcBuildingElement
+                <!--comment definir Plan Incline??-->
+                } 
+            </cos:if>           
+            <cos:then>
+                { 
+                ?x rdf:type ac:PlanIncline
+                }
+            </cos:then>
+        </cos:rule>
+        
+        <cos:rule rdf:ID="EspaceSecurise">
+            <cos:if>
+                PREFIX ac: &lt;&ac;&gt;
+                ifc: &lt;&ac;&gt;               
+                { ?x rdf:type ifc:IfcBuildIn
+                ?x ac:securise "true"
+                }
+            </cos:if>           
+            <cos:then>
+                { 
+                ?x rdf:type ac:EspaceSecurise
+                }
+            </cos:then>
+        </cos:rule>
+        
+        <cos:rule rdf:ID="Sas">
+            <cos:if>
+                PREFIX ac: &lt;&ac;&gt;
+                ifc: &lt;&ac;&gt;               
+                { ?x rdf:type ifc:IfcBuildingElement
+                ?x ac:placementDevant ?porteentree
+                ?porteentree rdf:type ac:PorteExterieure
+                }
+                UNION
+                { ?x rdf:type ac:EspaceDevantPorte
+                ?x ac:placementDevant ?porteentree
+                ?porteentree rdf:type ac:PorteExterieure
+                }
+                UNION
+                <!--Sas - entre deux pieces dont une est securisee??-->
+                { ?x rdf:type ifc:IfcBuildingElement
+                ?x ac:placementDevant ?porte
+                ?porte ifc:ifcRelConnectsElements ?piecesecurisee
+                ?piecesecurisee rdf:type ac:EspaceSecurise
+                <!--comment definir Sas??-->
+                } 
+            </cos:if>           
+            <cos:then>
+                { 
+                ?x rdf:type ac:Sas
+                }
+            </cos:then>
+        </cos:rule>
+        
+</rdf:RDF>

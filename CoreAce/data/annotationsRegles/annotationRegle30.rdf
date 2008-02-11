@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf [
+<!ENTITY annoComplexe   "http://rainbow.essi.fr/~anastasiya/data/annotationsRegles/annoComplexe.rdfs"> 
+<!ENTITY ifc      "http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs"> 
+<!ENTITY rdfs     "http://www.w3.org/2000/01/rdf-schema">
+]>
+
+<rdf:RDF 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="&rdfs;#"
+    xmlns     ="&annoComplexe;#"    
+    xml:base  ="&annoComplexe;-instances">>
+
+<AnnotationRegle>
+    <origineRegle>validation</origineRegle>
+    <actualiteRegle>nouveau</actualiteRegle>
+    <thematiqueRegle>accessibilité_des_handicapés</thematiqueRegle>
+    <exigenceRegle>accessibilité</exigenceRegle>
+    <annotationLegale>
+        <AnnotationTexteReglementaire>
+               <typeTexte>LEG</typeTexte>
+                <typeLEG>circulaire</typeLEG>
+               <thematique>accessibilité_des_handicapés</thematique>                                    
+               <emanant/>
+                 <sigle/>
+                    <numero/>82-81
+                    <date dateCreation="1982104"/>  
+                    <title/>
+                    <relatifA/>
+                <reference>
+                    <!-- liste des docs / via URI?? definir -->
+                </reference>
+        </AnnotationTexteReglementaire>
+        <InfoExtraction>
+            <uis/>
+            <article>1.1.1</article>
+            <paragraphe>1</paragraphe>
+            <numeroOrdreDansParagraphe>2</numeroOrdreDansParagraphe>
+        </InfoExtraction>
+    </annotationLegale>
+    <sujet>RDC</sujet>
+    <domaineApplication>ERP</domaineApplication>
+    <textRegle>Les rez-de-chaussée surélevés, ou surbaissés, doivent aussi être accessible
+        ainsi que les logements et les locaux collectifs qu'ils comportent.
+    </textRegle>
+    <contenuRegle>http://rainbow.essi.fr/~anastasiya/data/queries/query30.txt</contenuRegle>
+</AnnotationRegle>
+
+</rdf:RDF>

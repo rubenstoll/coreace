@@ -1,0 +1,54 @@
+<!DOCTYPE rdf:RDF [
+
+<!ENTITY cos   "http://www.inria.fr/acacia/corese#">
+<!ENTITY rdf   "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<!ENTITY rdfs   "http://www.w3.org/2000/01/rdf-schema#">
+<!ENTITY animals   "http://www.atl.lmco.com/projects/ontology/ontologies/animals/animalsA.owl#">
+<!ENTITY xsd    "http://www.w3.org/2001/XMLSchema#">
+<!ENTITY owl    "http://www.w3.org/2002/07/owl#">
+]>
+
+<rdf:RDF xmlns:rdfs="&rdfs;" xmlns:rdf="&rdf;"  xmlns:cos="&cos;"  xmlns:animals='&animals;' xmlns:owl='&owl;'
+>
+
+<cos:rule>
+<cos:if>
+PREFIX animals: &lt;http://www.atl.lmco.com/projects/ontology/ontologies/animals/animalsA.owl#&gt;
+{
+?x rdf:type animals:Person
+?x animals:hasChild ?y
+?x animals:hasChild ?z
+?z rdf:type animals:Woman
+filter(?y != ?z)
+}
+</cos:if>
+
+<cos:then>
+{ ?y animals:hasSister ?z }
+</cos:then>
+
+</cos:rule>
+
+
+
+
+<cos:rule>
+<cos:if>
+PREFIX animals: &lt;http://www.atl.lmco.com/projects/ontology/ontologies/animals/animalsA.owl#&gt;
+{
+?x rdf:type animals:Person
+?x animals:hasChild ?y
+?x animals:hasChild ?z
+?z rdf:type animals:Man
+filter(?y != ?z)
+}
+</cos:if>
+
+<cos:then>
+{ ?y animals:hasBrother ?z }
+
+</cos:then>
+
+</cos:rule>
+
+</rdf:RDF>

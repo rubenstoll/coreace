@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf [
+<!ENTITY ac   "http://rainbow.essi.fr/~anastasiya/data/ac.rdfs"> 
+<!ENTITY ifc      "http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs"> 
+<!ENTITY rdfs     "http://www.w3.org/2000/01/rdf-schema">
+<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+]>
+
+    <rdf:RDF 
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="&rdfs;#"
+        xmlns     ="&rdfs;#" 
+        xml:ifc  ="&ifc;#"
+        xml:ac  ="&ac;#"
+        xml:xsd  ="&xsd;#"
+        xml:base  ="&ac;" >
+        
+       
+        
+        <rdfs:Class rdf:ID="EscalierExterieur">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcStair"/>
+            <rdfs:label xml:lang="en"> stair </rdfs:label>
+            <rdfs:label xml:lang="fr"> escalier </rdfs:label>
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Mur">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcWall"/>
+            <rdfs:label xml:lang="fr"> mur </rdfs:label>
+            <rdfs:label xml:lang="en"> wall </rdfs:label>
+            <rdfs:comment xml:lang="fr"> sous classe de IfcWall 
+                parce que sens différent dans le contexte 550 </rdfs:comment>
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Marche">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/>
+            <rdfs:label xml:lang="fr"> marche </rdfs:label>
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Volée">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/>
+            <rdfs:label xml:lang="fr"> marche </rdfs:label>
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Giron">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/>
+            <rdfs:label xml:lang="fr"> giron </rdfs:label>
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="MainCourante">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/>
+            <rdfs:label xml:lang="fr"> main courante </rdfs:label>
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="MainCourantePréhensible">
+            <rdfs:subClassOf rdf:resource="&ac;#MainCourante"/>
+            <rdfs:label xml:lang="fr"> main courante préhensible</rdfs:label>
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Revetement">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/>
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcResource"/>
+            <rdfs:label xml:lang="fr"> revetement </rdfs:label>
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Ascenseur">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/>
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcResource"/>
+            <rdfs:label xml:lang="fr"> ascenseur </rdfs:label>
+        </rdfs:Class>
+               
+        <rdfs:Class rdf:ID="CabineAscenseur">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/> <!-- verifier s'il existe IfcElevator-->
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcSpace"/>
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuiltIn"/>
+            <rdfs:label xml:lang="fr"> cabine d'ascenseur </rdfs:label>               
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="BarreAppui">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/> <!-- definir par entites IFC ???-->
+            <rdfs:label xml:lang="fr"> barre d'appui </rdfs:label>     
+        </rdfs:Class>  
+        
+        <rdfs:Class rdf:ID="Batiment">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuilding"/> <!-- definir par entites IFC ???-->
+            <rdfs:label xml:lang="fr"> Batiment </rdfs:label>     
+        </rdfs:Class>  
+        
+        <rdfs:Class rdf:ID="RezDeChaussee">
+            <rdfs:sameAs rdf:resource="&ifc;#RDC"/>
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingStorey"/> <!-- une regle ajoutee-->
+            <rdfs:label xml:lang="fr"> storey where entrance level=0 true  </rdfs:label>     
+        </rdfs:Class>  
+        
+        <rdfs:Class rdf:ID="RDC">
+            <rdfs:sameAs rdf:resource="&ifc;#RezDeChaussee"/>
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingStorey"/> <!-- une regle ajoutee-->
+            <rdfs:label xml:lang="fr"> storey where entrance level=0 true  </rdfs:label>     
+        </rdfs:Class>
+        
+        <!-- big question: how to define a room/salle/logement - a discuter avec des architectes-->
+        
+        <rdfs:Class rdf:ID="HallEntree">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/>
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildIn"/>
+            <!--rdf:seeAlso rdf:resource="&ifc;#IfcSpace"/-->
+            <!--rdf:seeAlso rdf:resource="&ac;#LogementRDC"/-->
+            <rdfs:label xml:lang="en">
+                entrance hall
+            </rdfs:label>
+            <rdfs:label xml:lang="fr">
+                hall d'entree
+            </rdfs:label>        
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Logement">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildIn"/>
+            <rdfs:label xml:lang="fr"> storey where entrance level=0 true  </rdfs:label>     
+        </rdfs:Class> 
+        
+        <rdfs:Class rdf:ID="LogementRDC">
+            <rdfs:subClassOf rdf:resource="&ac;#Logement"/> <!-- une regle ajoutee-->
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildIn"/>
+            <!--rdf:seeAlso rdf:resource="&ac;#HallEntree"/-->
+            <rdfs:label xml:lang="fr"> storey where entrance level=0 true  </rdfs:label>     
+        </rdfs:Class>  
+        
+        <rdfs:Class rdf:ID="LogementRDCAccesParticulier">
+            <rdfs:subClassOf rdf:resource="&ac;#LogementRDC"/> 
+            <!--rdf:seeAlso rdf:resource="&ac;#HallEntree"/-->
+            <rdfs:label xml:lang="fr"> storey where entrance level=0 true  </rdfs:label>     
+        </rdfs:Class>  
+        
+        <rdfs:Class rdf:ID="LogementRDCAccesParticulierAccessible">
+            <rdfs:subClassOf rdf:resource="&ac;#LogementRDCAccesParticulier"/> 
+            <!--rdf:seeAlso rdf:resource="&ac;#HallEntreeAccessible"/-->
+            <rdfs:label xml:lang="fr"> LogementRDC accessible  </rdfs:label>     
+        </rdfs:Class>  
+        
+        <rdfs:Class rdf:ID="Locaux">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/> <!-- une regle ajoutee-->
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildIn"/>
+            <!--rdf:seeAlso rdf:resource="&ac;#     "/--> 
+        </rdfs:Class>  
+                     
+        <rdfs:Class rdf:ID="RevetementNonGlissant">
+            <rdfs:subClassOf rdf:resource="&ac;#Revetement"/>
+            <rdfs:label xml:lang="fr"> revetement  non glissant</rdfs:label>
+            </rdfs:Class>
+            
+            <rdfs:Class rdf:ID="RevetementRigide">
+                <rdfs:subClassOf rdf:resource="&ac;#Revetement"/> 
+            <rdfs:label xml:lang="fr"> revetement  rigide </rdfs:label>               
+            </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="LocauxVideOrdures">
+            <rdfs:subClassOf rdf:resource="&ac;#Locaux"/>
+            <!--rdf:seeAlso rdf:resource="&ac;#LocauxVidoirsDesVideOrduresCollectifs"/-->
+            </rdfs:Class>  
+            
+            <rdfs:Class rdf:ID="LocauxVidoirsDesVideOrduresCollectifs">
+                <rdfs:subClassOf rdf:resource="&ac;#Locaux"/>
+                <!--rdf:seeAlso rdf:resource="&ac;#LocauxVideOrdures"/-->
+            </rdfs:Class>
+            
+            <rdfs:Class rdf:ID="LocauxVideOrduresAccessibles">
+                <rdfs:subClassOf rdf:resource="&ac;#LocauxVideOrdures"/> 
+            </rdfs:Class>
+            
+            <rdfs:Class rdf:ID="LocauxVelos">
+                <rdfs:subClassOf rdf:resource="&ac;#Locaux"/>
+            </rdfs:Class>  
+            
+            <rdfs:Class rdf:ID="LocauxPousettes">
+                <rdfs:subClassOf rdf:resource="&ac;#Locaux"/>
+            </rdfs:Class> 
+            
+            <rdfs:Class rdf:ID="Cave">
+                <rdfs:subClassOf rdf:resource="&ac;#Locaux"/>
+            </rdfs:Class> 
+            
+            <rdfs:Class rdf:ID="HallEntreeAccessible">
+                <rdfs:subClassOf rdf:resource="&ac;#HallEntree"/>
+            </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="PorteExterieure">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcDoor"/> 
+            <rdfs:label xml:lang="fr">Porte Exterieure</rdfs:label> 
+        </rdfs:Class>    
+        
+        <rdfs:Class rdf:ID="PalierRepos">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuiltIn"/> 
+            <rdfs:label xml:lang="fr">Palier Repos</rdfs:label> 
+        </rdfs:Class>      
+        
+        <rdfs:Class rdf:ID="EspaceDevantPorte">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/> 
+                <!--rdfs:sameAs rdf:resource="&ac;#IPalierRepos"/--> 
+            <rdfs:label xml:lang="fr">Espace libre devant la porte</rdfs:label> 
+        </rdfs:Class>  
+                 
+        <rdfs:Class rdf:ID="PlanIncline">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <!--rdfs:sameAs rdf:resource="&ifc;#IfcStair"/--> 
+            <rdfs:label xml:lang="fr">Plan incline peut etre ??? stair </rdfs:label> 
+        </rdfs:Class>  
+        
+        <rdfs:Class rdf:ID="Sas">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <rdfs:subClassOf rdf:resource="&ac;#EspaceDevantPorte"/> 
+            <rdfs:label xml:lang="fr">definition de sas </rdfs:label> 
+        </rdfs:Class>  
+        
+        <rdfs:Class rdf:ID="EspaceSecurise">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildIn"/> 
+            <rdfs:label xml:lang="fr">definition de EspaceSecurise </rdfs:label> 
+        </rdfs:Class>  
+        
+        <rdfs:Class rdf:ID="Sol">
+            <rdfs:subClassOf rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <rdfs:label xml:lang="fr">definition de Sol </rdfs:label> 
+        </rdfs:Class> 
+        
+        <rdfs:Class rdf:ID="FauteuilRoulant">
+            <rdfs:comment xml:lang="fr">dimensions de FauteuilRoulant sont nécessaires
+                pour calculer les espaces accessibles
+            </rdfs:comment> 
+        </rdfs:Class> 
+        
+        <rdfs:Class rdf:ID="Ressaut">
+            <rdfs:comment xml:lang="fr">Un space contenant plusieurs floor non séparé par
+                des cloisons indique la présence d'un ressaut.
+                Leurs altitudes respectives permet de calculer la hauteur
+                de ce dernier
+            </rdfs:comment> 
+        </rdfs:Class>
+ 
+        <rdfs:Class rdf:ID="BordDeRessaut">
+            <rdfs:comment xml:lang="fr">doivent être arrondis
+                ou munis de chanfreins (150)
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Cheminement">
+            <rdfs:comment xml:lang="fr">utilisé dans les calcules
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="CheminementUsuel">
+            <rdfs:subClassOf rdf:resource="&ac;#Cheminement"/>
+            <rdfs:comment xml:lang="fr">utilisé dans les calcules
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="CheminementPraticable">
+            <rdfs:subClassOf rdf:resource="&ac;#Cheminement"/>
+            <rdfs:comment xml:lang="fr">utilisé dans les calcules
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="CheminementUsuelPraticable">
+            <rdfs:subClassOf rdf:resource="&ac;#CheminementUsuel"/>
+            <rdfs:subClassOf rdf:resource="&ac;#CheminementPraticable"/>
+            <rdfs:comment xml:lang="fr">utilisé dans les calcules
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Devers">
+            <rdfs:comment xml:lang="fr">utilisé dans les calcules
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="BattantDePorte">
+            <rdfs:comment xml:lang="fr">utilisé 210
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Trou">
+            <rdfs:comment xml:lang="fr">utilisé 220
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="TrouFente">
+            <rdfs:comment xml:lang="fr">utilisé 220
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="ObstacleALa Roue">
+            <rdfs:comment xml:lang="fr">utilisé 230
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="PrécisionArret">
+            <rdfs:comment xml:lang="fr">utilisé 240
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="CommandeAscenseur">
+            <rdfs:comment xml:lang="fr">utilisé 260
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="PlaceStationnement">
+            <rdfs:comment xml:lang="fr">utilisé 450
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Pente">
+            <rdfs:comment xml:lang="fr">pente - regarder comment calculer VC 490
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="GardeCorps">
+            <rdfs:comment xml:lang="fr">utilisé 500
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Rupture">
+            <rdfs:comment xml:lang="fr">dans le contexte de 500
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="TolérancePente">
+            <rdfs:comment xml:lang="fr">dans le contexte de 510
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdfs:Class rdf:ID="Ventaux">
+            <rdfs:comment xml:lang="fr">dans le contexte de 560
+            </rdfs:comment> 
+        </rdfs:Class>
+        
+        <rdf:Property rdf:ID="isAccessible"> 
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <!--donne erreur si pas commente Comment corriger?-->
+            <!--rdfs:range rdf:resource="&xsd;boolean"/-->            
+            <rdfs:label xml:lang="fr">
+                est accessible
+            </rdfs:label>            
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="isAccessibleDoor">
+            <rdfs:subPropertyOf rdf:resource="&ifc;#isAccessible"/>
+            <rdfs:domain rdf:resource="&ifc;#IfcDoor"/> 
+            <rdfs:label xml:lang="fr"> est une porte accessible </rdfs:label>
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="isAccessibleExtDoor">
+            <subPropertyOf rdf:resource="&ifc;#isAccessibleDoor"/>
+            <label xml:lang="fr">est une porte exterieure accessible</label>
+            <comment xml:lang="fr">...</comment>
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="overallHeightMin">
+            <rdfs:subPropertyOf rdf:resource="&ifc;#overallHeight"/>
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <rdfs:label xml:lang="fr">avoir hauteur min</rdfs:label>
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="overallHeightMax">
+            <rdfs:subPropertyOf rdf:resource="&ifc;#overallHeight"/>
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <rdfs:label xml:lang="fr">avoir hauteur max</rdfs:label>
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="hasRevetement">
+            <rdfs:subPropertyOf rdf:resource="&ifc;#hasMaterial"/>
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <rdfs:range rdf:resource="&ac;#Revetement"/>
+            <rdfs:label xml:lang="fr">avoir revetement</rdfs:label>
+        </rdf:Property>  
+        
+        
+        <rdf:Property rdf:ID="overallHeightMaxChild">
+            <rdfs:subPropertyOf rdf:resource="&ac;#overallHeightMax"/>
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <rdfs:label xml:lang="fr">avoir hauteur max pour enfants</rdfs:label>
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="overallHeightMaxAdult">
+            <rdfs:subPropertyOf rdf:resource="&ac;#overallHeightMax"/>
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <rdfs:label xml:lang="fr">avoir hauteur max pour adultes</rdfs:label>
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="placementDevant">
+            <rdfs:subPropertyOf rdf:resource="&ifc;#placementRelTo"/>
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <rdfs:range rdf:resource="&ifc;#IfcBuildingElement"/>            
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="situeEnHaut">
+            <rdfs:subPropertyOf rdf:resource="&ifc;#placementRelTo"/>
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <rdfs:range rdf:resource="&ifc;#IfcBuildingElement"/>            
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="situeEnBas">
+            <rdfs:subPropertyOf rdf:resource="&ifc;#placementRelTo"/>
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <rdfs:range rdf:resource="&ifc;#IfcBuildingElement"/>            
+        </rdf:Property>                
+        
+        <rdf:Property rdf:ID="situeAlInterieur">
+            <rdfs:subPropertyOf rdf:resource="&ifc;#PlacementRelTo"/>
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildingElement"/> 
+            <rdfs:range rdf:resource="&ifc;#IfcBuildingElement"/>            
+            <rdfs:label xml:lang="fr"> placement a l'interieur</rdfs:label>
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="securise"> 
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildIn"/> 
+            <!--rdfs:range rdf:resource="&xsd;boolean"/-->            
+            <!--donne erreur si pas commente Comment corriger?-->
+            <rdfs:label xml:lang="fr">
+                est securise
+            </rdfs:label>            
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="amenageEnChanfrein"> 
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildIn"/> 
+            <rdfs:range rdf:resource="&ifc;#IfcBuildIn"/>            
+            <rdfs:comment xml:lang="fr">
+                dans le contexte 520
+            </rdfs:comment>            
+        </rdf:Property>
+        
+        <rdf:Property rdf:ID="desservir"> 
+            <rdfs:domain rdf:resource="&ifc;#IfcBuildIn"/> 
+            <rdfs:range rdf:resource="&ifc;#IfcBuildIn"/>            
+            <rdfs:comment xml:lang="fr">
+                dans le contexte 20
+            </rdfs:comment>            
+        </rdf:Property>
+               
+           
+    </rdf:RDF>

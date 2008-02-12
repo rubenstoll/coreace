@@ -1,9 +1,0 @@
-PREFIX ac: <http://rainbow.essi.fr/~anastasiya/data/ac.rdfs#>
-PREFIX ifc: <http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#>
-select ?x  ?y display xml where
-{
-?x rdf:type ac:PalierRepos
-?x ac:horizontaux ?y
-?y rdf:type "&xsd:boolean"
-?y rdf:value 'true'
-}

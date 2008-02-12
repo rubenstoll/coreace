@@ -1,3 +1,0 @@
-PREFIX ac: <http://rainbow.essi.fr/~anastasiya/data/ac.rdfs#>
-select ?x  display xml where
-{?x rdf:type ac:LogementRDCAccesParticulierAccessible}

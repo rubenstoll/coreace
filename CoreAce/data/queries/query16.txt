@@ -1,7 +1,0 @@
-PREFIX ac: <http://rainbow.essi.fr/~anastasiya/data/ac.rdfs#>
-PREFIX ifc: <http://rainbow.essi.fr/~anastasiya/data/ifc.owl#>
-select ?x  ?y display xml where
-{
-?x rdf:type ifc:IfcBuildingStorey
-?x ifc:elevation ?y
-}

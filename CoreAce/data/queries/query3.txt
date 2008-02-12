@@ -1,3 +1,0 @@
-PREFIX ifc: <http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#>
-select ?x ?y display xml where
-{?x rdfs:subClassOf ?y}

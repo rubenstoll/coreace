@@ -1,0 +1,9 @@
+PREFIX ac: <http://rainbow.essi.fr/~anastasiya/data/ac.rdfs#>
+PREFIX ifc: <http://rainbow.essi.fr/~anastasiya/data/ifc.owl#>
+select ?x  ?xdim display xml where
+{
+?x rdf:type ifc:IfcBoundingBox
+?x ifc:xDim ?xdim
+?xdim  rdf:datatype rdf:datatype '&xsd;nonNegativeInteger'
+?y rdf:value "9670"
+}

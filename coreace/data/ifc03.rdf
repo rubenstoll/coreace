@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+<!ENTITY ifc      "http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs"> 
+<!ENTITY rdf     "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<!ENTITY rdfs     "http://www.w3.org/2000/01/rdf-schema">
+<!ENTITY ex     "urn:iso10303-28:ex">
+<!ENTITY xsd     "http://www.w3.org/2001/XMLSchema#">]>
+
+<!-- 
+
+-->
+
+<rdf:RDF 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="&rdfs;#"
+    xmlns:xsd ="&xsd;#" 
+    xmlns     ="&ifc;#"    
+    xml:base  ="&ifc;-instances"
+    xmlns:ex="urn:iso10303-28:ex" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  >
+    <IfcDoor id="i2059">
+        <globalId>23q7i2dXqHseOb00sJH0zG</globalId>
+        <ownerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </ownerHistory>
+        <name>Tür-001</name>
+        <objectPlacement>
+            <IfcLocalPlacement xsi:nil="true" ref="i2057"/>
+        </objectPlacement>
+        <overallHeight>2260.</overallHeight>
+        <overallWidth>885.</overallWidth>
+    </IfcDoor>
+    <IfcRelFillsElement id="i2076">
+        <globalId>00yUtAl5H4QeJXtp3MqMuZ</globalId>
+        <ownerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </ownerHistory>
+        <relatingOpeningElement>
+            <IfcOpeningElement xsi:nil="true" ref="i2033"/>
+        </relatingOpeningElement>
+        <relatedBuildingElement>
+            <IfcDoor xsi:nil="true" ref="i2059"/>
+        </relatedBuildingElement>
+    </IfcRelFillsElement>
+    <IfcDoorLiningProperties id="i2077">
+        <globalId>0KB0USdXP20u5MGN8pw0FT</globalId>
+        <ownerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </ownerHistory>
+        <liningDepth>100.</liningDepth>
+        <liningThickness>50.</liningThickness>
+    </IfcDoorLiningProperties>
+    <IfcDoorPanelProperties id="i2081">
+        <globalId>3Cd1ansQXCiBVgCzYnRipZ</globalId>
+        <ownerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </ownerHistory>
+        <panelDepth>40.</panelDepth>
+        <panelOperation>swinging</panelOperation>
+        <panelWidth>1.</panelWidth>
+        <panelPosition>middle</panelPosition>
+    </IfcDoorPanelProperties>
+    <IfcDoorStyle id="i2085">
+        <globalId>3rkCkg87r2_gXUk5YElFxF</globalId>
+        <ownerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </ownerHistory>
+        <name>IFC2x_SnglDoorSnglSwing</name>
+        <hasPropertySets ex:cType="list">
+            <IfcDoorLiningProperties ex:pos="0" xsi:nil="true" ref="i2077"/>
+            <IfcDoorPanelProperties ex:pos="1" xsi:nil="true" ref="i2081"/>
+        </hasPropertySets>
+        <operationType>single_swing_left</operationType>
+        <constructionType>notdefined</constructionType>
+        <parameterTakesPrecedence>true</parameterTakesPrecedence>
+        <sizeable>false</sizeable>
+    </IfcDoorStyle>
+    <IfcRelDefinesByType id="i2089">
+        <globalId>1Hhl6SIYvAReVoGHZzdeZ0</globalId>
+        <ownerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </ownerHistory>
+        <name>IFC2x_SnglDoorSnglSwing</name>
+        <relatedObjects ex:cType="set">
+            <IfcDoor ex:pos="0" xsi:nil="true" ref="i2059"/>
+        </relatedObjects>
+        <relatingType>
+            <IfcDoorStyle xsi:nil="true" ref="i2085"/>
+        </relatingType>
+    </IfcRelDefinesByType>
+    <IfcPropertySingleValue id="i2091">
+        <name>INFO</name>
+        <nominalValue>
+            <IfcDescriptiveMeasure></IfcDescriptiveMeasure>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2095">
+        <name>REVEAL</name>
+        <nominalValue>
+            <IfcInteger>0</IfcInteger>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2099">
+        <name>HEAD DEPTH</name>
+        <nominalValue>
+            <IfcNumericMeasure>0.06</IfcNumericMeasure>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2103">
+        <name>SILL DEPTH</name>
+        <nominalValue>
+            <IfcNumericMeasure>0.</IfcNumericMeasure>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2107">
+        <name>JAMB DEPTH</name>
+        <nominalValue>
+            <IfcNumericMeasure>0.03</IfcNumericMeasure>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2111">
+        <name>JAMB DEPTH 2</name>
+        <nominalValue>
+            <IfcNumericMeasure>0.03</IfcNumericMeasure>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2115">
+        <name>HINGE AT START</name>
+        <nominalValue>
+            <IfcInteger>1</IfcInteger>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2119">
+        <name>SWING TO INTERIOR</name>
+        <nominalValue>
+            <IfcInteger>0</IfcInteger>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2123">
+        <name>REFSIDE</name>
+        <nominalValue>
+            <IfcInteger>1</IfcInteger>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcComplexProperty id="i2127">
+        <name>DOOR</name>
+        <usageName>ArchiCAD</usageName>
+        <hasProperties ex:cType="set">
+            <IfcPropertySingleValue ex:pos="0" xsi:nil="true" ref="i2091"/>
+            <IfcPropertySingleValue ex:pos="1" xsi:nil="true" ref="i2095"/>
+            <IfcPropertySingleValue ex:pos="2" xsi:nil="true" ref="i2099"/>
+            <IfcPropertySingleValue ex:pos="3" xsi:nil="true" ref="i2103"/>
+            <IfcPropertySingleValue ex:pos="4" xsi:nil="true" ref="i2107"/>
+            <IfcPropertySingleValue ex:pos="5" xsi:nil="true" ref="i2111"/>
+            <IfcPropertySingleValue ex:pos="6" xsi:nil="true" ref="i2115"/>
+            <IfcPropertySingleValue ex:pos="7" xsi:nil="true" ref="i2119"/>
+            <IfcPropertySingleValue ex:pos="8" xsi:nil="true" ref="i2123"/>
+        </hasProperties>
+    </IfcComplexProperty>
+    
+    
+    <IfcDoor id="i2773">
+        <GlobalId>23qRlBdXqHseOb00sJH0zG</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <Name>Tür-002</Name>
+        <ObjectPlacement>
+            <IfcLocalPlacement xsi:nil="true" ref="i2771"/>
+        </ObjectPlacement>
+        <OverallHeight>2260.</OverallHeight>
+        <OverallWidth>885.</OverallWidth>
+    </IfcDoor>
+    <IfcRelFillsElement id="i2790">
+        <GlobalId>2MDpaJnzP0POkN$lvBGZXF</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <RelatingOpeningElement>
+            <IfcOpeningElement xsi:nil="true" ref="i2746"/>
+        </RelatingOpeningElement>
+        <RelatedBuildingElement>
+            <IfcDoor xsi:nil="true" ref="i2773"/>
+        </RelatedBuildingElement>
+    </IfcRelFillsElement>
+    <IfcDoorLiningProperties id="i2791">
+        <GlobalId>2gBtEn$$DCfhXuI71oz4a4</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <LiningDepth>100.</LiningDepth>
+        <LiningThickness>50.</LiningThickness>
+    </IfcDoorLiningProperties>
+    <IfcDoorPanelProperties id="i2795">
+        <GlobalId>0OWxPFhUb7WwPUIRgeRZRm</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <PanelDepth>40.</PanelDepth>
+        <PanelOperation>swinging</PanelOperation>
+        <PanelWidth>1.</PanelWidth>
+        <PanelPosition>middle</PanelPosition>
+    </IfcDoorPanelProperties>
+    <IfcDoorStyle id="i2799">
+        <GlobalId>01Dw$GzEP2Xv4mkcpGEgzp</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <Name>IFC2x_SnglDoorSnglSwing</Name>
+        <HasPropertySets ex:cType="list">
+            <IfcDoorLiningProperties ex:pos="0" xsi:nil="true" ref="i2791"/>
+            <IfcDoorPanelProperties ex:pos="1" xsi:nil="true" ref="i2795"/>
+        </HasPropertySets>
+        <OperationType>single_swing_right</OperationType>
+        <ConstructionType>notdefined</ConstructionType>
+        <ParameterTakesPrecedence>true</ParameterTakesPrecedence>
+        <Sizeable>false</Sizeable>
+    </IfcDoorStyle>
+    <IfcRelDefinesByType id="i2803">
+        <GlobalId>1t0PqUYvDDhPiHjY0zH9kC</GlobalId>
+        <OwnerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </OwnerHistory>
+        <Name>IFC2x_SnglDoorSnglSwing</Name>
+        <RelatedObjects ex:cType="set">
+            <IfcDoor ex:pos="0" xsi:nil="true" ref="i2773"/>
+        </RelatedObjects>
+        <RelatingType>
+            <IfcDoorStyle xsi:nil="true" ref="i2799"/>
+        </RelatingType>
+    </IfcRelDefinesByType>
+    <IfcPropertySingleValue id="i2805">
+        <Name>INFO</Name>
+        <NominalValue>
+            <IfcDescriptiveMeasure></IfcDescriptiveMeasure>
+        </NominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2809">
+        <Name>REVEAL</Name>
+        <NominalValue>
+            <IfcInteger>0</IfcInteger>
+        </NominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2813">
+        <Name>HEAD DEPTH</Name>
+        <NominalValue>
+            <IfcNumericMeasure>0.06</IfcNumericMeasure>
+        </NominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2818">
+        <name>SILL DEPTH</name>
+        <nominalValue>
+            <IfcNumericMeasure>0.</IfcNumericMeasure>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2822">
+        <name>JAMB DEPTH</name>
+        <nominalValue>
+            <IfcNumericMeasure>0.03</IfcNumericMeasure>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2826">
+        <name>JAMB DEPTH 2</name>
+        <nominalValue>
+            <IfcNumericMeasure>0.03</IfcNumericMeasure>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2830">
+        <name>HINGE AT START</name>
+        <nominalValue>
+            <IfcInteger>1</IfcInteger>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2834">
+        <name>SWING TO INTERIOR</name>
+        <nominalValue>
+            <IfcInteger>1</IfcInteger>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    <IfcPropertySingleValue id="i2838">
+        <name>REFSIDE</name>
+        <nominalValue>
+            <IfcInteger>0</IfcInteger>
+        </nominalValue>
+    </IfcPropertySingleValue>
+    
+    <!-- for query 16-->
+
+    <IfcBuildingStorey id="i14474">
+        <globalId>1V98jtOgX4gB87zwrBnhJM</globalId>
+        <ownerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </ownerHistory>
+        <name>EG</name>
+        <objectPlacement>
+            <IfcLocalPlacement xsi:nil="true" ref="i14472"/>
+        </objectPlacement>
+        <compositionType>element</compositionType>
+        <elevation>0.</elevation>
+    </IfcBuildingStorey>
+    
+    <IfcBuildingStorey id="i24745">
+        <globalId>2VJKeSzRDC8g_Ff8pFl3bO</globalId>
+        <ownerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>
+        </ownerHistory>
+        <name>Obergeschoss</name>
+        <objectPlacement>
+            <IfcLocalPlacement xsi:nil="true" ref="i24743"/>
+        </objectPlacement>
+        <compositionType>element</compositionType>
+        <elevation>3000.</elevation>
+    </IfcBuildingStorey>
+    
+    <!-- for query 17 -->
+    <IfcMaterialLayer id="i24754">
+        <material>
+            <IfcMaterial xsi:nil="true" ref="i14483"/>
+        </material>
+        <layerThickness>115.</layerThickness>
+    </IfcMaterialLayer>
+    <IfcMaterialLayer id="i24756">
+        <material>
+            <IfcMaterial xsi:nil="true" ref="i14487"/>
+        </material>
+        <layerThickness>40.</layerThickness>
+    </IfcMaterialLayer>
+    <IfcMaterialLayer id="i24758">
+        <material>
+            <IfcMaterial xsi:nil="true" ref="i13177"/>
+        </material>
+        <layerThickness>60.</layerThickness>
+    </IfcMaterialLayer>
+    <IfcMaterialLayer id="i24760">
+        <material>
+            <IfcMaterial xsi:nil="true" ref="i14493"/>
+        </material>
+        <layerThickness>240.</layerThickness>
+    </IfcMaterialLayer>    
+    
+    <!-- for query 18 -->
+    <IfcBoundingBox id="i24794">
+        <corner>
+            <IfcCartesianPoint xsi:nil="true" ref="i24792"/>
+        </corner>
+        <xDim>10670.</xDim>
+        <yDim>455.</yDim>
+        <zDim>2700.</zDim>
+    </IfcBoundingBox>
+    
+    <IfcBoundingBox id="i25954">
+        <corner>
+            <IfcCartesianPoint xsi:nil="true" ref="i25952"/>
+        </corner>
+        <xDim>9670.</xDim>
+        <yDim>455.</yDim>
+        <zDim>2700.</zDim>
+    </IfcBoundingBox>
+    
+</rdf:RDF>

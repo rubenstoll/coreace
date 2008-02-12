@@ -1,0 +1,11 @@
+PREFIX ac: <http://rainbow.essi.fr/~anastasiya/data/ac.rdfs#>
+PREFIX ifc: <http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#>
+select ?x  ?y ?z display xml where
+{
+?x rdf:type ac:HallEntreeAccessible
+?x ifc:placementRelTo ?y
+?y rdf:type ifc:IfcBuildingStorey
+?y ifc:pset_BuildingStoreyCommon_EntranceLevel ?z
+?z rdf:datatype '&xsd;boolean'
+?z rdf:value "TRUE"
+}

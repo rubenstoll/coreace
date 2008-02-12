@@ -1,0 +1,3 @@
+PREFIX ifc: <http://rainbow.essi.fr/~anastasiya/data/ifc.rdfs#>
+select ?x  display xml where
+{?x rdf:type ifc:IfcProject}

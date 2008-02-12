@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+<!ENTITY ifc      "http://rainbow.essi.fr/~anastasiya/ifc.rdfs"> 
+<!ENTITY rdf     "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<!ENTITY rdfs     "http://www.w3.org/2000/01/rdf-schema">
+<!ENTITY ex     "urn:iso10303-28:ex">
+<!ENTITY xsd     "http://www.w3.org/2001/XMLSchema#">]>
+
+<!-- 
+
+-->
+
+<rdf:RDF 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="&rdfs;#"
+    xmlns:xsd ="&xsd;#" 
+    xmlns     ="&ifc;#"    
+    xml:base  ="&ifc;-instances"
+    xmlns:ex="urn:iso10303-28:ex" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  >
+    <IfcProject rdf:ID="toto"/>
+  
+    <IfcProject rdf:ID="i1545">
+        <globalId>
+            32qoDp9B9CmAOHdQt$_EOS
+        </globalId>
+        <ownerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>            
+        </ownerHistory>
+        <name>
+            Default Project
+        </name>
+        <representationContexts ex:cType="set">
+            <IfcGeometricRepresentationContext ex:pos="0" xsi:nil="true" ref="i1543"/>
+            <IfcGeometricRepresentationContext ex:pos="1" xsi:nil="true" ref="i1625"/>
+        </representationContexts>
+        <unitsInContext>
+            <IfcUnitAssignment xsi:nil="true" ref="i1529"/>
+        </unitsInContext>            
+    </IfcProject>
+    
+
+    <IfcDoor rdf:ID="i1707">
+        <globalId>
+            23qCusdXqHseOb00sJH0zG
+        </globalId>
+        <ownerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>            
+        </ownerHistory>
+        
+        <name>
+            Tür-003
+        </name>
+        <objectPlacement>
+            <IfcLocalPlacement xsi:nil="true" ref="i1705"/>
+        </objectPlacement>
+        <overallHeight>324</overallHeight>	
+        <overallWidth>346</overallWidth>
+    </IfcDoor>
+    
+    <IfcRelFillsElement  rdf:ID="i1724">
+        <globalId>
+            1mATH2hlL1Tu9maMAt_$hB
+        </globalId>
+        <ownerHistory>
+            <IfcOwnerHistory xsi:nil="true" ref="i1516"/>            
+        </ownerHistory>
+        <relatingOpeningElement>
+            <IfcOpeningElement xsi:nil="true" ref="i1682"/>
+        </relatingOpeningElement>
+        <relatedBuildingElement>
+              <IfcDoor xsi:nil="true" ref="i1707"/>
+        </relatedBuildingElement>
+    </IfcRelFillsElement>
+
+</rdf:RDF>

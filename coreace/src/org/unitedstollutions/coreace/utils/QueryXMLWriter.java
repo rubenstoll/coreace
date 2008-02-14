@@ -3,7 +3,9 @@
  */
 package org.unitedstollutions.coreace.utils;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -25,6 +27,13 @@ public class QueryXMLWriter {
 	 */
 	public void writeIFC(ArrayList<QueryFile> queryFileList) {
 
+		// define an output directory
+		File outputDir = new File("output");
+		if(outputDir.mkdir()) {
+			// only goes in once - upon directory creation
+			System.out.println("Created output directory ...");
+		}
+		
 		for (QueryFile qf : queryFileList) {
 
 			Element root = new Element("query");
@@ -41,15 +50,27 @@ public class QueryXMLWriter {
 			}
 
 			Document doc = new Document(root);
-			
-			// serialize it onto System.out
+
+			// write to the output file with directory specified
+			// NOTE: the .txt from the file name is dropped and replaced by .xml
+
+			// set the file with directory prepended
+			String outputFileName = outputDir.toString() + File.separator
+					+ qf.getFileName().replaceFirst(".txt", "") + ".xml";
+
+			// start writing
 			try {
-				XMLOutputter serializer = new XMLOutputter(Format.getPrettyFormat());
-				serializer.output(doc, System.out);
+				BufferedWriter out = new BufferedWriter(new FileWriter(
+						outputFileName));
+				XMLOutputter serializer = new XMLOutputter(Format
+						.getPrettyFormat());
+				serializer.output(doc, out);
 			} catch (IOException e) {
 				System.err.println(e);
 			}
 		}
+		System.out.println("Done!");
+		System.out.println("Output written to directory: " + outputDir);
 	}
 
 	/**
@@ -67,10 +88,10 @@ public class QueryXMLWriter {
 		qp.findQueryFiles(dir);
 
 		// parse returns a list of QueryFile objects
-		ArrayList<QueryFile> qryFileList = qp.parse(qp.getQueryFiles(), dir);		
-		
+		ArrayList<QueryFile> qryFileList = qp.parse(qp.getQueryFiles(), dir);
+
 		qwr.writeIFC(qryFileList);
-		
+
 	}
 
 }

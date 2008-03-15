@@ -31,7 +31,7 @@ public class QueryXMLWriter {
 		File outputDir = new File("output");
 		if(outputDir.mkdir()) {
 			// only goes in once - upon directory creation
-			System.out.println("Created output directory ...");
+			System.out.println("Now created output directory ...");
 		}
 		
 		for (QueryFile qf : queryFileList) {

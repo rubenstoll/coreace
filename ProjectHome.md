@@ -1,0 +1,1 @@
+Corese is a construction rule checking application
